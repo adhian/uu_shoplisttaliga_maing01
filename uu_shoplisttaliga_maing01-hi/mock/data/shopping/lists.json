@@ -1,0 +1,14 @@
+[
+    { "id":"1",  "name": "SHOPPING LIST 01", "archived" : "true", "items": 80},
+    { "id":"2", "name": "SHOPPING LIST 02", "archived" : "false", "items": 81 },
+    { "id":"3","name": "SHOPPING LIST 03", "archived" : "true", "items": 8 },
+    { "id":"4","name": "SHOPPING LIST 04", "archived" : "false", "items": 26 },
+    { "id":"5","name": "SHOPPING LIST 05", "archived" : "false", "items": 31 },
+    { "id":"6","name": "SHOPPING LIST 06", "archived" : "true", "items": 14 },
+    { "id":"7","name": "SHOPPING LIST 07", "archived" : "false", "items": 0 },
+    { "id":"8","name": "SHOPPING LIST 08", "archived" : "true", "items": 12 },
+    { "id":"9","name": "SHOPPING LIST 09", "archived" : "true", "items": 33 },
+    { "id":"10","name": "SHOPPING LIST 10", "archived" : "false", "items": 14 },
+    { "id":"11","name": "SHOPrPING LIST 11", "archived" : "false", "items": 0 },
+    { "id":"12","name": "SHOPPING LIST 12" , "archived" : "true", "items": 180}
+  ]
