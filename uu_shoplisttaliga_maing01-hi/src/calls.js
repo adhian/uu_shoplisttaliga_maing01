@@ -19,6 +19,21 @@ const Calls = {
   //   return Calls.call("get", commandUri, dtoIn);
   // },
 
+  loadShoppingLists(dtoIn) {
+    const commandUri = Calls.getCommandUri("shopping/lists");
+    return Calls.call("get", commandUri, dtoIn);
+  },
+
+  createShoppingList(dtoIn) {
+    const commandUri = Calls.getCommandUri("shopping/create");
+    return Calls.call("post", commandUri, dtoIn);
+  },
+
+  deleteShoppingList(dtoIn) {
+    const commandUri = Calls.getCommandUri("shopping/delete");
+    return Calls.call("post", commandUri, dtoIn);
+  },
+
   loadIdentityProfiles() {
     const commandUri = Calls.getCommandUri("sys/uuAppWorkspace/initUve");
     return Calls.call("get", commandUri);

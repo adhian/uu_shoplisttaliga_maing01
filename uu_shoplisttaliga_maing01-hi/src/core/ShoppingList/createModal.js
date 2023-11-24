@@ -43,18 +43,20 @@ function CreateModal({ onSubmit }) {
             </div>
           }
         >
-          <Uu5Forms.FormText name="name" label="Name for new item" />
+          <Uu5Forms.Form.View gridLayout={{ xs: "name, author", s: "name author" }}>
+            <Uu5Forms.FormText name="name" label="Name for new item" />
 
-          <Uu5Forms.FormSelect
-            name="author"
-            label="Author of created item"
-            //TO DO render member in itemList
-            itemList={[
-              { value: "John Doe", children: "John Doe" },
-              { value: "Mariah Doe", children: "Mariah Doe" },
-              { value: "Serena Doe", children: "Serena Doe" },
-            ]}
-          />
+            <Uu5Forms.FormSelect
+              name="author"
+              label="Author of created item"
+              //TO DO render member in itemList
+              itemList={[
+                { value: "John Doe", children: "John Doe" },
+                { value: "Mariah Doe", children: "Mariah Doe" },
+                { value: "Serena Doe", children: "Serena Doe" },
+              ]}
+            />
+          </Uu5Forms.Form.View>
         </Uu5Elements.Modal>
       </Uu5Forms.Form.Provider>
     </div>

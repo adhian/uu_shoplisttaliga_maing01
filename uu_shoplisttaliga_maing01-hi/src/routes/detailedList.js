@@ -1,16 +1,13 @@
 //@@viewOn:imports
 import { Utils, createVisualComponent, useSession, Lsi } from "uu5g05";
-import Uu5Elements from "uu5g05-elements";
-import Uu5TilesElements from "uu5tilesg02-elements";
 import { withRoute } from "uu_plus4u5g02-app";
-import ListProvider from "../core/ShoppingList/listProvider.js";
-import UsersInfo from "../core/UserList/usersInfo.js";
 import Config from "./config/config.js";
+import ListWrapper from "../core/ShoppingList/ListWrapper.js";
+import Uu5Elements from "uu5g05-elements";
 
 //@@viewOff:imports
 
 //@@viewOn:constants
-
 //@@viewOff:constants
 
 //@@viewOn:css
@@ -25,9 +22,9 @@ const Css = {
 //@@viewOn:helpers
 //@@viewOff:helpers
 
-let Home = createVisualComponent({
+let DetailedList = createVisualComponent({
   //@@viewOn:statics
-  uu5Tag: Config.TAG + "Home",
+  uu5Tag: Config.TAG + "DetailedList",
   //@@viewOff:statics
 
   //@@viewOn:propTypes
@@ -50,16 +47,17 @@ let Home = createVisualComponent({
     const attrs = Utils.VisualComponent.getAttrs(props, Css.main());
     return (
       <div {...attrs}>
-        <ListProvider />
+        <Uu5Elements.Link href="home">Home</Uu5Elements.Link>
+        <ListWrapper />
       </div>
     );
     //@@viewOff:render
   },
 });
 
-Home = withRoute(Home, { authenticated: true });
+DetailedList = withRoute(DetailedList, { authenticated: true });
 
 //@@viewOn:exports
-export { Home };
-export default Home;
+export { DetailedList };
+export default DetailedList;
 //@@viewOff:exports

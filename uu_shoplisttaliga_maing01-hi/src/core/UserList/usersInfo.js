@@ -12,7 +12,7 @@ const INITIAL_USERS_LIST = [
 function UsersInfo({ onUserSelect }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
-  const [leaveModalOpen, setLeaveModalOpen] = useState(false);
+  const [leaveDialogOpen, setLeaveDialogOpen] = useState(false);
   //add member
   const [userList, setUserList] = useState(INITIAL_USERS_LIST);
   // delete member
@@ -23,7 +23,7 @@ function UsersInfo({ onUserSelect }) {
   const handleLeaveList = () => {
     setUserList(userList.filter((user) => user.id !== selectedUser.id));
     setSelectedUser(INITIAL_USERS_LIST[0]);
-    setLeaveModalOpen(false);
+    setLeaveDialogOpen(false);
   };
 
   //delete member
@@ -88,7 +88,7 @@ function UsersInfo({ onUserSelect }) {
         },
       ]
     : [
-        { icon: "uugds-delete", children: "LEAVE LIST", colorScheme: "red", onClick: () => setLeaveModalOpen(true) },
+        { icon: "uugds-delete", children: "LEAVE LIST", colorScheme: "red", onClick: () => setLeaveDialogOpen(true) },
         {
           children: "Select Member",
           primary: true,
@@ -158,32 +158,22 @@ function UsersInfo({ onUserSelect }) {
         </Uu5Elements.Modal>
       </Uu5Forms.Form.Provider>
 
-      <Uu5Forms.Form.Provider
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleLeaveList();
-        }}
-      >
-        <Uu5Elements.Modal
-          open={leaveModalOpen}
-          onClose={() => setLeaveModalOpen(false)}
-          header=" You are going to leave from list."
-          footer={
-            <div>
-              <Uu5Forms.CancelButton
-                className={Config.Css.css({ margin: 10 })}
-                icon="uugds-close"
-                onClick={() => setLeaveModalOpen(false)}
-              >
-                Cancel
-              </Uu5Forms.CancelButton>
-              <Uu5Forms.SubmitButton icon="uugds-check" colorScheme="red">
-                I want to leave!
-              </Uu5Forms.SubmitButton>
-            </div>
-          }
-        ></Uu5Elements.Modal>
-      </Uu5Forms.Form.Provider>
+      <Uu5Elements.Dialog
+        open={leaveDialogOpen}
+        onClose={() => setLeaveDialogOpen(false)}
+        header=" You are going to leave from list."
+        icon={<Uu5Elements.Svg code="uugdssvg-svg-delete" />}
+        actionList={[
+          {
+            children: "Delete",
+            colorScheme: "negative",
+            significance: "highlighted",
+            icon: "uugds-delete",
+            onClick: () => handleLeaveList(),
+          },
+          { children: "Cancel", icon: "uugds-close", onClick: () => setLeaveDialogOpen(false) },
+        ]}
+      ></Uu5Elements.Dialog>
     </Uu5Elements.Block>
   );
 }
