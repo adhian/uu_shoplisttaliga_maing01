@@ -1,5 +1,5 @@
 //@@viewOn:imports
-import { Utils, createComponent, useDataList } from "uu5g05";
+import { Utils, createComponent, useDataList, useState, useEffect } from "uu5g05";
 import Calls from "calls";
 import Config from "../config/config.js";
 import Uu5Elements from "uu5g05-elements";
@@ -44,8 +44,22 @@ const ListProvider = createComponent({
       },
       itemHandlerMap: {
         delete: Calls.deleteShoppingList,
+        update: Calls.updateShoppingList,
       },
     });
+
+ /*    const [data, setData] = useState(dataList.data);
+
+    const addToList = (newList) => {
+      console.log("Adding new list: ", newList);
+      const updatedData = [...data, newList];
+      setData(updatedData);
+      console.log("Updated data: ", updatedData);
+    };
+    useEffect(() => {
+      setData(dataList.data);
+    }, [dataList.data]);
+ */
 
     let result;
 
@@ -63,13 +77,15 @@ const ListProvider = createComponent({
         result = <Uu5Elements.Alert header="Data for Shopping List cannot be loaded" priority="error" />;
         break;
 
-      case "ready":
-        result = <ListView data={dataList.data} onCreate={dataList.handlerMap.create} />;
-        break;
       default:
-        console.error("Not known state", dataList.state);
-        result = "ERROR";
+        if ("ready")
+          result = <ListView data={dataList.data} onCreate={dataList.handlerMap.create} /* addToList={addToList} */ />;
+        else {
+          console.error("Not known state", dataList.state);
+          result = "ERROR";
+        }
     }
+
     //@@viewOn:private
 
     //@@viewOff:private

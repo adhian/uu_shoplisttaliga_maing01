@@ -26,11 +26,18 @@ const Calls = {
 
   createShoppingList(dtoIn) {
     const commandUri = Calls.getCommandUri("shopping/create");
-    return Calls.call("post", commandUri, dtoIn);
+    const result = Calls.call("post", commandUri, dtoIn);
+
+    return result;
   },
 
   deleteShoppingList(dtoIn) {
     const commandUri = Calls.getCommandUri("shopping/delete");
+    return Calls.call("post", commandUri, dtoIn);
+  },
+
+  updateShoppingList(dtoIn) {
+    const commandUri = Calls.getCommandUri("shopping/update");
     return Calls.call("post", commandUri, dtoIn);
   },
 

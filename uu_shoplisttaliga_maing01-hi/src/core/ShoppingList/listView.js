@@ -98,7 +98,10 @@ const ListView = createVisualComponent({
           >
             <Uu5TilesControls.FilterBar />
             <Uu5TilesElements.Grid tileMinWidth={300} tileMaxWidth={400}>
+
               {<ListTile hideDeleteIcon={!value} />}
+
+              
             </Uu5TilesElements.Grid>
           </Uu5Elements.Block>{" "}
         </Uu5Tiles.ControllerProvider>
@@ -107,8 +110,16 @@ const ListView = createVisualComponent({
           key={createModalOpen}
           // async TO DO
 
-          onSubmit={(e) => {
-            props.onCreate({ id: Utils.String.generateId(), ...e.data.value });
+          onSubmit={async (e) => {
+            const newList = {
+              id: Utils.String.generateId(),
+              name: e.data.value.newListName,
+              archived: "false",
+              items: 0,
+            };
+
+            await props.onCreate(newList);
+            //props.addToList(newList);
             setCreateModalOpen(false);
           }}
         >
