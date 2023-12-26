@@ -48,19 +48,6 @@ const ListProvider = createComponent({
       },
     });
 
- /*    const [data, setData] = useState(dataList.data);
-
-    const addToList = (newList) => {
-      console.log("Adding new list: ", newList);
-      const updatedData = [...data, newList];
-      setData(updatedData);
-      console.log("Updated data: ", updatedData);
-    };
-    useEffect(() => {
-      setData(dataList.data);
-    }, [dataList.data]);
- */
-
     let result;
 
     switch (dataList.state) {

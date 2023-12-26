@@ -30,7 +30,44 @@
     "initialize": "Inicializovat"
   },
   "Menu": {
-    "home": "Vítejte",
-    "about": "O aplikaci"
+    "home": "Seznam nákupných seznamů",
+    "about": "O aplikaci",
+    "detail": "Zobrazit seznam"
+  },
+  "CreateList" : {
+    "title" : "Vytvořit seznam"
+  },
+  "CreateListModal" : {
+    "title" : "Název nového seznamu: "
+  },
+  "Owner": {
+    "label": "Vlastník"
+  },
+  "Filter": {
+    "label": "ne - Archivované",
+    "toolTipArchived" : "Archivovaný seznam",
+    "toolTipNoArchived" : "Nearchivovaný seznam"
+  },
+
+  "Button": {
+    "add" : "Přidat",
+    "cancel" : "Zrušit",
+    "archive" : "Archivuj",
+    "update": "Upravit",
+    "delete" :  "Smazat"
+  },
+  "Tooltip": {
+    "archive" : "Archivovaný",
+    "unarchive" : "Nearchivovaný"
+  },
+  "DialogListModal" : {
+    "delete" : "Chceš smazat seznam?",
+    "archive" : "Chceš archivovať tento seznam?",
+    "update" : "Chceš upravit tento seznam?"
+  },
+  "Tile" : {
+    "item" : "Položky na dokončení:",
+    "detail" : "Zobrazit seznam  "
   }
+
 }

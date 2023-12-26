@@ -1,5 +1,5 @@
 //@@viewOn:imports
-import { Utils, createVisualComponent, useState } from "uu5g05";
+import { Utils, createVisualComponent, useState, Lsi, useAppBackground, AppBackgroundProvider } from "uu5g05";
 import Uu5Elements from "uu5g05-elements";
 import Uu5Forms from "uu5g05-forms";
 import Uu5Tiles from "uu5tilesg02";
@@ -7,11 +7,13 @@ import Uu5TilesElements from "uu5tilesg02-elements";
 import Uu5TilesControls from "uu5tilesg02-controls";
 import Config from "../config/config.js";
 import ListTile from "./listTile.js";
+import importLsi from "../../lsi/import-lsi.js";
 
 const FILTER_DEFINITION_LIST = [
   {
     key: "archive",
-    label: "not-Archived",
+    label: <Lsi import={importLsi} path={["Filter", "label"]} />,
+
     filter: (item, value) => {
       if (value) {
         return item.data.archived === "false";
@@ -63,11 +65,15 @@ const ListView = createVisualComponent({
     const [createModalOpen, setCreateModalOpen] = useState(false);
     const [activeFilterList, setActiveFilterList] = useState([]);
     const [value, setValue] = useState(false);
+    const [background, setBackground] = useAppBackground();
+    const darkMode = background === "dark";
+
     const actionList = [
       { component: <Uu5TilesControls.FilterButton type="bar" /> },
+      //{ component: <Uu5Elements.LanguageSelector languageList={["en", "cs"]} /> },
       {
         icon: "uugds-plus",
-        children: "Add List",
+        children: <Lsi import={importLsi} path={["CreateList", "title"]} />,
         significance: "highlighted",
 
         onClick: () => setCreateModalOpen(true),
@@ -82,6 +88,23 @@ const ListView = createVisualComponent({
           filterList={activeFilterList}
           onFilterChange={(e) => setActiveFilterList(e.data.filterList)}
         >
+          <Uu5Elements.Block>
+            <Uu5Elements.Text>
+              {" "}
+              <Uu5Elements.Toggle
+                value={!darkMode}
+                onChange={() =>
+                  setBackground({
+                    backgroundColor: darkMode
+                      ? null
+                      : Uu5Elements.UuGds.ColorPalette.getValue(["building", "dark", "main"]),
+                  })
+                }
+                iconOff="uugdsstencil-weather-moon"
+                iconOn="uugdsstencil-weather-sun"
+              />
+            </Uu5Elements.Text>
+          </Uu5Elements.Block>
           <Uu5Elements.Block
             header={
               <Uu5Elements.Text category="story" segment="heading" type="h3">
@@ -89,7 +112,12 @@ const ListView = createVisualComponent({
                 <Uu5Elements.Toggle
                   value={value}
                   onChange={(e) => setValue(e.data.value)}
-                  label={<Uu5Elements.Badge>OWNER</Uu5Elements.Badge>}
+                  label={
+                    <Uu5Elements.Badge>
+                      {" "}
+                      <Lsi import={importLsi} path={["Owner", "label"]} />{" "}
+                    </Uu5Elements.Badge>
+                  }
                   colorScheme="primary"
                 />
               </Uu5Elements.Text>
@@ -98,10 +126,7 @@ const ListView = createVisualComponent({
           >
             <Uu5TilesControls.FilterBar />
             <Uu5TilesElements.Grid tileMinWidth={300} tileMaxWidth={400}>
-
               {<ListTile hideDeleteIcon={!value} />}
-
-              
             </Uu5TilesElements.Grid>
           </Uu5Elements.Block>{" "}
         </Uu5Tiles.ControllerProvider>
@@ -126,7 +151,7 @@ const ListView = createVisualComponent({
           <Uu5Elements.Modal
             open={createModalOpen}
             onClose={() => setCreateModalOpen(false)}
-            header="Create New Shopping List"
+            header={<Lsi import={importLsi} path={["CreateList", "title"]} />}
             footer={
               <>
                 <Uu5Forms.CancelButton
@@ -134,13 +159,19 @@ const ListView = createVisualComponent({
                   icon="uugds-close"
                   onClick={() => setCreateModalOpen(false)}
                 >
-                  Cancel
+                  <Lsi import={importLsi} path={["Button", "cancel"]} />
                 </Uu5Forms.CancelButton>
-                <Uu5Forms.SubmitButton icon="uugds-check">Add List</Uu5Forms.SubmitButton>
+                <Uu5Forms.SubmitButton icon="uugds-check">
+                  <Lsi import={importLsi} path={["Button", "add"]} />
+                </Uu5Forms.SubmitButton>
               </>
             }
           >
-            <Uu5Forms.FormText name="newListName" required label="New Shopping List Name: " />
+            <Uu5Forms.FormText
+              name="newListName"
+              required
+              label={<Lsi import={importLsi} path={["CreateListModal", "title"]} />}
+            />
           </Uu5Elements.Modal>
         </Uu5Forms.Form.Provider>
       </div>

@@ -4,6 +4,7 @@ import { withRoute } from "uu_plus4u5g02-app";
 import Config from "./config/config.js";
 import ListWrapper from "../core/ShoppingList/ListWrapper.js";
 import Uu5Elements from "uu5g05-elements";
+import RouteBar from "../core/route-bar";
 
 //@@viewOff:imports
 
@@ -47,7 +48,7 @@ let DetailedList = createVisualComponent({
     const attrs = Utils.VisualComponent.getAttrs(props, Css.main());
     return (
       <div {...attrs}>
-        <Uu5Elements.Link href="home">Home</Uu5Elements.Link>
+        <RouteBar />
         <ListWrapper />
       </div>
     );

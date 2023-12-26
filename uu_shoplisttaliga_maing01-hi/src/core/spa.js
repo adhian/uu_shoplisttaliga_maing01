@@ -6,6 +6,7 @@ import Plus4U5App from "uu_plus4u5g02-app";
 
 import Config from "./config/config.js";
 import Home from "../routes/home.js";
+import DetailedList from "../routes/detailed-list.js";
 
 //@@viewOff:imports
 
@@ -13,7 +14,7 @@ import Home from "../routes/home.js";
 const About = Utils.Component.lazy(() => import("../routes/about.js"));
 const InitAppWorkspace = Utils.Component.lazy(() => import("../routes/init-app-workspace.js"));
 const ControlPanel = Utils.Component.lazy(() => import("../routes/control-panel.js"));
-const DetailedList = Utils.Component.lazy(() => import("../routes/detailedList.js"));
+//const DetailedList = Utils.Component.lazy(() => import("../routes/detailed-list.js"));
 
 const ROUTE_MAP = {
   "": { redirect: "home" },

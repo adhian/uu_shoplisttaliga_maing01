@@ -2,8 +2,9 @@
 import { Utils, createVisualComponent, useSession, Lsi } from "uu5g05";
 import Uu5Elements from "uu5g05-elements";
 import Uu5TilesElements from "uu5tilesg02-elements";
-import { withRoute } from "uu_plus4u5g02-app";
+import { RouteBar, withRoute } from "uu_plus4u5g02-app";
 import ListProvider from "../core/ShoppingList/listProvider.js";
+import ListWrapper from "../core/ShoppingList/ListWrapper.js";
 import UsersInfo from "../core/UserList/usersInfo.js";
 import Config from "./config/config.js";
 

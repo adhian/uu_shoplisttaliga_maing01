@@ -30,7 +30,41 @@
     "initialize": "Initialize"
   },
   "Menu": {
-    "home": "Welcome",
-    "about": "About Application"
+    "home": "Dashboard Shopping Lists",
+    "about": "About Application",
+    "detail" : "Detail of Shopping List"
+  },
+  "CreateList" : {
+    "title" : "Create List"
+  },
+  "CreateListModal" : {
+    "title" : "New Shopping List Name: "
+  },
+  "Owner": {
+    "label": "Owner"
+  }, 
+  "Filter": {
+    "label": "not-Archived"
+  },
+  "Button": {
+    "add" : "Add List",
+    "delete" :  "Delete",
+    "archive" : "Archive List",
+    "update" : "Update List",
+    "cancel" : "Cancel"
+  },
+  "Tooltip": {
+    "archive" : "Archive",
+    "unarchive" : "Unarchive"
+  },
+
+"DialogListModal" : {
+    "delete" : "Do you want delete?",
+    "archive" : "Do you want archive this list?",
+    "update" : "Do you want update this list?"
+  },
+  "Tile" : {
+    "item" : "Item to complete:",
+    "detail" : "Detail of"
   }
 }
