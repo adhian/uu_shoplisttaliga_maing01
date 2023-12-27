@@ -46,7 +46,9 @@
   "Filter": {
     "label": "ne - Archivované",
     "toolTipArchived" : "Archivovaný seznam",
-    "toolTipNoArchived" : "Nearchivovaný seznam"
+    "toolTipNoArchived" : "Nearchivovaný seznam",
+    "notCompleted" : "Ukáž jen nedokončený položky",
+    "showAll" : "Ukáž vše"
   },
 
   "Button": {
@@ -68,6 +70,39 @@
   "Tile" : {
     "item" : "Položky na dokončení:",
     "detail" : "Zobrazit seznam  "
+  }, 
+  "ListNameModal"  : {
+    "label" : "Změnit název seznamu",
+    "changeName"  : "Změnit název",
+    "newNameForList" : "Nový název seznamu"
+
+  },
+  "Member" : {
+    "addMember" : "Přidaj člena",
+    "removeMember" : "Odeber člena",
+    "selectMember" : "Vyber člena",
+    "leaveList" : "Opustit seznam",
+    "addMemberModal" : "Přidej nového člena do seznamu",
+    "addMemberModalName" : "Přidej člena :",
+    "removeMemberSelect" : "Vyber člena, kterého chceš odebrat:",
+    "leaveListModal" : "Opustit seznam",
+    "leaveListModalText" : "Chceš opustit tento seznam?",
+    "leaveButton" : "Opustit"
+
+
+  },
+  "CreateNewItem" : {
+    "title" : "Vytvořit nový prvek",
+    "nameLabel" : "Název",
+    "author" : "Autor",
+    "create" : "Vytvořit",
+    "noItem" : "Žádný prvek. Vše hotovo. ",
+    "createdBy" : "Vytvořil: "
+  }, 
+
+  "DisplayedItems": {
+    "completedFirst": "Dokončeno",
+    "total": "` Completed ${selectedData.length} item(s) out of ${data.length} total.`"
   }
 
 }

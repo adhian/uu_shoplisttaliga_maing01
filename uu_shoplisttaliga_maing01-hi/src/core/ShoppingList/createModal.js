@@ -1,7 +1,8 @@
-import { useState } from "uu5g05";
+import { useState, Lsi } from "uu5g05";
 import Uu5Elements from "uu5g05-elements";
 import Uu5Forms from "uu5g05-forms";
 import Config from "../config/config";
+import importLsi from "../../lsi/import-lsi.js";
 
 function CreateModal({ onSubmit }) {
   const [modalOpen, setModalOpen] = useState(false);
@@ -22,14 +23,14 @@ function CreateModal({ onSubmit }) {
         colorScheme="primary"
         onClick={() => setModalOpen(true)} //open the modal
       >
-        Create New Item
+        <Lsi import={importLsi} path={["CreateNewItem", "title"]} />
       </Uu5Elements.Button>
 
       <Uu5Forms.Form.Provider onSubmit={handleSubmit}>
         <Uu5Elements.Modal
           open={modalOpen}
           onClose={() => setModalOpen(false)}
-          header="Create New Item"
+          header={<Lsi import={importLsi} path={["CreateNewItem", "title"]} />}
           footer={
             <div>
               <Uu5Forms.CancelButton
@@ -37,18 +38,20 @@ function CreateModal({ onSubmit }) {
                 icon="uugds-close"
                 onClick={() => setModalOpen(false)}
               >
-                Cancel
+                <Lsi import={importLsi} path={["Button", "cancel"]} />
               </Uu5Forms.CancelButton>
-              <Uu5Forms.SubmitButton icon="uugds-check">Create</Uu5Forms.SubmitButton>
+              <Uu5Forms.SubmitButton icon="uugds-check">
+                <Lsi import={importLsi} path={["CreateNewItem", "create"]} />
+              </Uu5Forms.SubmitButton>
             </div>
           }
         >
           <Uu5Forms.Form.View gridLayout={{ xs: "name, author", s: "name author" }}>
-            <Uu5Forms.FormText name="name" label="Name for new item" />
+            <Uu5Forms.FormText name="name" label={<Lsi import={importLsi} path={["CreateNewItem", "nameLabel"]} />} />
 
             <Uu5Forms.FormSelect
               name="author"
-              label="Author of created item"
+              label={<Lsi import={importLsi} path={["CreateNewItem", "author"]} />}
               //TO DO render member in itemList
               itemList={[
                 { value: "John Doe", children: "John Doe" },

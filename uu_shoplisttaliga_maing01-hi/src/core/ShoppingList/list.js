@@ -1,7 +1,8 @@
-import { useCallback, useDataController, useDataSelection } from "uu5g05";
+import { useCallback, useDataController, useDataSelection, Lsi } from "uu5g05";
 import Uu5Elements from "uu5g05-elements";
 import config from "../config/config";
 import CustomTile from "./customTile";
+import importLsi from "../../lsi/import-lsi.js";
 
 function List({ showNotSelected, handleDelete }) {
   let { displayedData } = useDataController();
@@ -36,7 +37,7 @@ function List({ showNotSelected, handleDelete }) {
         className={config.Css.css({ width: 400, width: "100%" })}
         header={
           <Uu5Elements.Text category="story" segment="heading" type="h2">
-            No item to complete! All done.
+            <Lsi import={importLsi} path={["CreateNewItem", "noItem"]} />
           </Uu5Elements.Text>
         }
       ></Uu5Elements.Block>

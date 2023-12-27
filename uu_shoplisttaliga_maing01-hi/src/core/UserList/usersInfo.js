@@ -1,7 +1,8 @@
-import { useState, Utils } from "uu5g05";
+import { useState, Utils, Lsi } from "uu5g05";
 import Uu5Elements from "uu5g05-elements";
 import Uu5Forms from "uu5g05-forms";
 import Config from "../config/config";
+import importLsi from "../../lsi/import-lsi.js";
 
 const INITIAL_USERS_LIST = [
   { id: Utils.String.generateId(), userName: "John Doe", isOwner: true },
@@ -64,10 +65,14 @@ function UsersInfo({ onUserSelect }) {
 
   const actionList = selectedUser.isOwner
     ? [
-        { icon: "uugds-plus", children: "Add Member", onClick: () => setModalOpen(true) },
+        {
+          icon: "uugds-plus",
+          children: <Lsi import={importLsi} path={["Member", "addMember"]} />,
+          onClick: () => setModalOpen(true),
+        },
         {
           icon: "uugds-delete",
-          children: "Remove Member",
+          children: <Lsi import={importLsi} path={["Member", "removeMember"]} />,
           colorScheme: "red",
           onClick: () => {
             setUserIdToDelete(userOptions.id);
@@ -76,7 +81,7 @@ function UsersInfo({ onUserSelect }) {
         },
 
         {
-          children: "Select Member",
+          children: <Lsi import={importLsi} path={["Member", "selectMember"]} />,
           primary: true,
           collapsedChildren: "Update",
           itemList: renderedUserList,
@@ -88,9 +93,14 @@ function UsersInfo({ onUserSelect }) {
         },
       ]
     : [
-        { icon: "uugds-delete", children: "LEAVE LIST", colorScheme: "red", onClick: () => setLeaveDialogOpen(true) },
         {
-          children: "Select Member",
+          icon: "uugds-delete",
+          children: <Lsi import={importLsi} path={["Member", "leaveList"]} />,
+          colorScheme: "red",
+          onClick: () => setLeaveDialogOpen(true),
+        },
+        {
+          children: <Lsi import={importLsi} path={["Member", "selectMember"]} />,
           primary: true,
           collapsedChildren: "Update",
           itemList: renderedUserList,
@@ -107,7 +117,11 @@ function UsersInfo({ onUserSelect }) {
       header={
         <Uu5Elements.Text category="story" segment="heading" type="h2">
           {selectedUser.userName}
-          {selectedUser.isOwner && <Uu5Elements.Badge size="m">OWNER</Uu5Elements.Badge>}
+          {selectedUser.isOwner && (
+            <Uu5Elements.Badge size="m">
+              <Lsi import={importLsi} path={["Owner", "label"]} />
+            </Uu5Elements.Badge>
+          )}
         </Uu5Elements.Text>
       }
       actionList={actionList}
@@ -116,7 +130,7 @@ function UsersInfo({ onUserSelect }) {
         <Uu5Elements.Modal
           open={modalOpen}
           onClose={() => setModalOpen(false)}
-          header=" Add New Member to List"
+          header={<Lsi import={importLsi} path={["Member", "addMemberModal"]} />}
           footer={
             <div>
               <Uu5Forms.CancelButton
@@ -124,13 +138,15 @@ function UsersInfo({ onUserSelect }) {
                 icon="uugds-close"
                 onClick={() => setModalOpen(false)}
               >
-                Cancel
+                <Lsi import={importLsi} path={["Button", "cancel"]} />
               </Uu5Forms.CancelButton>
-              <Uu5Forms.SubmitButton icon="uugds-check">Add Member</Uu5Forms.SubmitButton>
+              <Uu5Forms.SubmitButton icon="uugds-check">
+                <Lsi import={importLsi} path={["Member", "addMember"]} />
+              </Uu5Forms.SubmitButton>
             </div>
           }
         >
-          <Uu5Forms.FormText name="member" label="Member Name: " />
+          <Uu5Forms.FormText name="member" label={<Lsi import={importLsi} path={["Member", "addMemberModalName"]} />} />
         </Uu5Elements.Modal>
       </Uu5Forms.Form.Provider>
 
@@ -138,7 +154,7 @@ function UsersInfo({ onUserSelect }) {
         <Uu5Elements.Modal
           open={deleteModalOpen}
           onClose={() => setDeleteModalOpen(false)}
-          header="Remove Member"
+          header={<Lsi import={importLsi} path={["Member", "removeMember"]} />}
           footer={
             <div>
               <Uu5Forms.CancelButton
@@ -146,32 +162,40 @@ function UsersInfo({ onUserSelect }) {
                 icon="uugds-close"
                 onClick={() => setDeleteModalOpen(false)}
               >
-                Cancel
+                <Lsi import={importLsi} path={["Button", "cancel"]} />
               </Uu5Forms.CancelButton>
               <Uu5Forms.SubmitButton icon="uugds-delete" colorScheme="red">
-                Remove Member
+                <Lsi import={importLsi} path={["Member", "removeMember"]} />
               </Uu5Forms.SubmitButton>
             </div>
           }
         >
-          <Uu5Forms.FormSelect name="author" label="Select Member to Delete" itemList={userOptions} />
+          <Uu5Forms.FormSelect
+            name="author"
+            label={<Lsi import={importLsi} path={["Member", "removeMemberSelect"]} />}
+            itemList={userOptions}
+          />
         </Uu5Elements.Modal>
       </Uu5Forms.Form.Provider>
 
       <Uu5Elements.Dialog
         open={leaveDialogOpen}
         onClose={() => setLeaveDialogOpen(false)}
-        header=" You are going to leave from list."
+        header={<Lsi import={importLsi} path={["Member", "leaveListModalText"]} />}
         icon={<Uu5Elements.Svg code="uugdssvg-svg-delete" />}
         actionList={[
           {
-            children: "Delete",
+            children: <Lsi import={importLsi} path={["Member", "leaveButton"]} />,
             colorScheme: "negative",
             significance: "highlighted",
             icon: "uugds-delete",
             onClick: () => handleLeaveList(),
           },
-          { children: "Cancel", icon: "uugds-close", onClick: () => setLeaveDialogOpen(false) },
+          {
+            children: <Lsi import={importLsi} path={["Button", "cancel"]} />,
+            icon: "uugds-close",
+            onClick: () => setLeaveDialogOpen(false),
+          },
         ]}
       ></Uu5Elements.Dialog>
     </Uu5Elements.Block>

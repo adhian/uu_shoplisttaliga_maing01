@@ -44,7 +44,9 @@
     "label": "Owner"
   }, 
   "Filter": {
-    "label": "not-Archived"
+    "label": "not-Archived",
+    "notCompleted" : "Show only Not Completed",
+    "showAll" : "Show All"
   },
   "Button": {
     "add" : "Add List",
@@ -66,5 +68,38 @@
   "Tile" : {
     "item" : "Item to complete:",
     "detail" : "Detail of"
+  },
+  "ListNameModal"  : {
+    "label" : "Change List Name",
+    "changeName"  : "Change Name",
+    "newNameForList" : "New Name for List"
+  },
+  "Member" : {
+    "addMember" : "Add member",
+    "removeMember" : "Remove member",
+    "selectMember" : "Select member",
+    "leaveList" : "Leave List",
+    "addMemberModal" : "Add New Member to List",
+    "addMemberModalName" : "Member name:",
+    "removeMemberSelect" : "Select Member to Delete:",
+    "leaveListModal" : "Leave List",
+    "leaveListModalText" : "Do you want to leave this list?",
+    "leaveButton" : "Leave"
+
+  },
+
+  "CreateNewItem" : {
+    "title" : "Create New Item",
+    "nameLabel" : "Name for new item",
+    "author" : "Author of created item",
+    "create" : "Create",
+    "noItem" : "No item to complete! All done.",
+    "createdBy" : "Created by: "
+  },
+
+  "DisplayedItems": {
+    "completedFirst": "Completed ",
+    "total": "` Completed ${selectedData.length} item(s) out of ${data.length} total.`"
   }
+
 }

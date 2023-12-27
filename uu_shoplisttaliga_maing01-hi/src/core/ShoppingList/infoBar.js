@@ -1,7 +1,7 @@
-import { useDataController, useDataSelection } from "uu5g05";
+import { useDataController, useDataSelection, Lsi } from "uu5g05";
 import Uu5Elements from "uu5g05-elements";
-
 import Config from "../config/config";
+import importLsi from "../../lsi/import-lsi.js";
 
 function InfoBar({ toggleShowNotSelected, showNotSelected }) {
   let { data } = useDataController();
@@ -15,14 +15,20 @@ function InfoBar({ toggleShowNotSelected, showNotSelected }) {
         colorScheme="light-green"
         onClick={() => toggleShowNotSelected()}
       >
-        {showNotSelected ? "Show All" : "Show only Not Completed"}
+        {showNotSelected ? (
+          <Lsi import={importLsi} path={["Filter", "showAll"]} />
+        ) : (
+          <Lsi import={importLsi} path={["Filter", "notCompleted"]} />
+        )}
       </Uu5Elements.Button>
 
-      <Uu5Elements.Block className={Config.Css.css({ width: "100%", margin: 10 })}>
+      {/*       <Uu5Elements.Block className={Config.Css.css({ width: "100%", margin: 10 })}>
         {isDisplayedSelected
           ? ` Displaying ${data.length} selected item(s).`
-          : ` Completed ${selectedData.length} item(s) out of ${data.length} total.`}
-      </Uu5Elements.Block>
+          : ` ${(<Lsi import={importLsi} path={["DisplayedItems", "completedFirst"]} />)} + ${
+              selectedData.length
+            } item(s) out of ${data.length} total.`}
+      </Uu5Elements.Block> */}
     </div>
   );
 }

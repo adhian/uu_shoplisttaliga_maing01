@@ -1,5 +1,7 @@
+import { Lsi } from "uu5g05";
 import Uu5Elements from "uu5g05-elements";
 import Config from "../config/config";
+import importLsi from "../../lsi/import-lsi.js";
 
 const selectButtonClassName = Config.Css.css`
 position: absolute;
@@ -54,7 +56,7 @@ function CustomTile(props) {
         {
           <Uu5Elements.Badge colorScheme={"dark-blue"} significance={"common"}>
             {" "}
-            Created by: {item.author}{" "}
+            <Lsi import={importLsi} path={["CreateNewItem", "createdBy"]} /> {item.author}{" "}
           </Uu5Elements.Badge>
         }
       </Uu5Elements.ListItem>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { DataControllerProvider, Utils } from "uu5g05";
+import { DataControllerProvider, Lsi, Utils } from "uu5g05";
 import Uu5Elements from "uu5g05-elements";
 import InfoBar from "./infoBar";
 import List from "./list";
@@ -7,6 +7,7 @@ import CreateModal from "./createModal";
 import Config from "../config/config";
 import UsersInfo from "../UserList/usersInfo";
 import Uu5Forms from "uu5g05-forms";
+import importLsi from "../../lsi/import-lsi.js";
 
 const INITIAL_SHOPPING_LIST = [
   { id: Utils.String.generateId(), name: "Hammer", author: "John Doe" },
@@ -78,7 +79,7 @@ function ListWrapper() {
             <Uu5Elements.Modal
               open={modalOpen}
               onClose={() => setModalOpen(false)}
-              header="Change List Name"
+              header={<Lsi import={importLsi} path={["ListNameModal", "label"]} />}
               footer={
                 <div>
                   <Uu5Forms.CancelButton
@@ -86,13 +87,18 @@ function ListWrapper() {
                     icon="uugds-close"
                     onClick={() => setModalOpen(false)}
                   >
-                    Cancel
+                    <Lsi import={importLsi} path={["Button", "cancel"]} />
                   </Uu5Forms.CancelButton>
-                  <Uu5Forms.SubmitButton icon="uugds-check">Change Name</Uu5Forms.SubmitButton>
+                  <Uu5Forms.SubmitButton icon="uugds-check">
+                    <Lsi import={importLsi} path={["ListNameModal", "changeName"]} />
+                  </Uu5Forms.SubmitButton>
                 </div>
               }
             >
-              <Uu5Forms.FormText name="listName" label="New Name for List" />
+              <Uu5Forms.FormText
+                name="listName"
+                label={<Lsi import={importLsi} path={["ListNameModal", "changeName"]} />}
+              />
             </Uu5Elements.Modal>
           </Uu5Forms.Form.Provider>
         </Uu5Elements.Block>
