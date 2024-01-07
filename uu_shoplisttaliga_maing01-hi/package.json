@@ -18,7 +18,8 @@
     "uu_plus4u5g02-elements": "^1.22.2",
     "uu5tilesg02": "^2.0.0",
     "uu5tilesg02-elements": "^2.0.0",
-    "uu5tilesg02-controls": "^2.0.0"
+    "uu5tilesg02-controls": "^2.0.0",
+    "uu5chartsg01": "^3.0.0"
   },
   "uuBuildSettings": {
     "externals": {}
